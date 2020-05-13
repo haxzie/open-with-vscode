@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Open With Code",
+  "version": "1.0",
+  "description": "Quickly opens any git repository with VSCode",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.github.com/*/*"],
+      "js": ["index.js"]
+    }
+  ]
+}
