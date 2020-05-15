@@ -1,0 +1,38 @@
+23:23:26:15:2020: 	{
+  "error": "Error: ENOENT: no such file or directory, mkdir '~/github-projects'",
+  "stack": "Error: ENOENT: no such file or directory, mkdir '~/github-projects'\n    at Object.mkdirSync (fs.js:757:3)\n    at createDirIfNotExist (/home/haxzie/projects/open-with-vscode/packages/connector/src/actions.js:33:8)\n    at cloneAndOpenRepo (/home/haxzie/projects/open-with-vscode/packages/connector/src/actions.js:61:3)\n    at listenForMessage (/home/haxzie/projects/open-with-vscode/packages/connector/index.js:19:5)\n    at Socket.process.stdin.on (/home/haxzie/projects/open-with-vscode/packages/connector/src/protocol.js:66:7)\n    at Socket.emit (events.js:198:13)\n    at emitReadable_ (_stream_readable.js:555:12)\n    at process._tickCallback (internal/process/next_tick.js:63:19)"
+}
+23:29:16:15:2020: 	{
+  "error": "Error: ENOENT: no such file or directory, mkdir '~/github-projects'",
+  "stack": "Error: ENOENT: no such file or directory, mkdir '~/github-projects'\n    at Object.mkdirSync (fs.js:757:3)\n    at createDirIfNotExist (/home/haxzie/projects/open-with-vscode/packages/connector/src/actions.js:33:8)\n    at cloneAndOpenRepo (/home/haxzie/projects/open-with-vscode/packages/connector/src/actions.js:61:3)\n    at listenForMessage (/home/haxzie/projects/open-with-vscode/packages/connector/index.js:19:5)\n    at Socket.process.stdin.on (/home/haxzie/projects/open-with-vscode/packages/connector/src/protocol.js:66:7)\n    at Socket.emit (events.js:198:13)\n    at emitReadable_ (_stream_readable.js:555:12)\n    at process._tickCallback (internal/process/next_tick.js:63:19)"
+}
+23:30:40:15:2020: 	{
+  "error": "Error: ENOENT: no such file or directory, mkdir '~/github-projects'",
+  "stack": "Error: ENOENT: no such file or directory, mkdir '~/github-projects'\n    at Object.mkdirSync (fs.js:757:3)\n    at createDirIfNotExist (/home/haxzie/projects/open-with-vscode/packages/connector/src/actions.js:33:8)\n    at cloneAndOpenRepo (/home/haxzie/projects/open-with-vscode/packages/connector/src/actions.js:61:3)\n    at listenForMessage (/home/haxzie/projects/open-with-vscode/packages/connector/index.js:19:5)\n    at Socket.process.stdin.on (/home/haxzie/projects/open-with-vscode/packages/connector/src/protocol.js:66:7)\n    at Socket.emit (events.js:198:13)\n    at emitReadable_ (_stream_readable.js:555:12)\n    at process._tickCallback (internal/process/next_tick.js:63:19)"
+}
+23:36:22:15:2020: 	{
+  "cloneURL": "git@github.com:haxzie/test.git",
+  "repositoryName": "test",
+  "status": "start",
+  "code": 201
+}
+23:36:22:15:2020: 	"/home/haxzie/github-projects/test"
+23:36:24:15:2020: 	{
+  "status": "completed",
+  "code": 200,
+  "stdout": "",
+  "stderr": "Cloning into '/home/haxzie/github-projects/test'...\n"
+}
+23:36:56:15:2020: 	{
+  "cloneURL": "git@github.com:haxzie/test.git",
+  "repositoryName": "test",
+  "status": "start",
+  "code": 201
+}
+23:36:56:15:2020: 	"/home/haxzie/github-projects/test"
+23:36:56:15:2020: 	{
+  "status": "completed",
+  "code": 200,
+  "stdout": "",
+  "stderr": ""
+}

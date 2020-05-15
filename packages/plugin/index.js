@@ -7,7 +7,6 @@ function getModalEl() {
   return modalEl;
 }
 
-
 /**
  * Function to get the clone URL displayed in the input field
  * Based on which input section is active (either ssh or https)
@@ -15,21 +14,15 @@ function getModalEl() {
  */
 function getCloneUrl() {
   const modalEl = getModalEl();
-  const httpsCloneEl = modalEl.getElementsByClassName("https-clone-options")[0];
-  const httpsCloneUrl = httpsCloneEl.getElementsByClassName("input-sm")[0]
-    .value;
+  // const httpsCloneEl = modalEl.getElementsByClassName("https-clone-options")[0];
+  // const httpsCloneUrl = httpsCloneEl.getElementsByClassName("input-sm")[0]
+  //   .value;
 
   const sshCloneEl = modalEl.getElementsByClassName("ssh-clone-options")[0];
   const sshCloneUrl = sshCloneEl.getElementsByClassName("input-sm")[0].value;
 
-  const httpsDisplay = window.getComputedStyle(httpsCloneEl).display;
-  if (httpsDisplay === "block") {
-    return httpsCloneUrl;
-  } else {
-    return sshCloneUrl;
-  }
+  return sshCloneUrl;
 }
-
 
 /**
  * Function to append a new button called "Open with VSCode"
@@ -48,11 +41,11 @@ function appendOpenWithButton() {
   openWithCodeContainerEl.appendChild(openWithCodeButtonEl);
 
   openWithCodeContainerEl.onclick = (e) => {
+    browser.runtime.sendMessage({ url: getCloneUrl() });
     console.log("Open with code clicked");
   };
 
   getModalEl().appendChild(openWithCodeContainerEl);
 }
-
 
 appendOpenWithButton();
