@@ -1,8 +1,7 @@
 <center>
-<h1>Open With Visual Studio Code</h1>
+<h1 align="center">Open With Visual Studio Code</h1>
+<p align="center">FireFox plugin and connector to open any GitHub repository directly from the browser</p>
 </center>
-
-> FireFox plugin and connector to open any GitHub repository directly from the browser
 
 ![](public/cover.png)
 
