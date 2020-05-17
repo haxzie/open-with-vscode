@@ -1,4 +1,6 @@
-# Open With Visual Studio Code
+<center>
+<h1>Open With Visual Studio Code</h1>
+</center>
 
 > FireFox plugin and connector to open any GitHub repository directly from the browser
 
