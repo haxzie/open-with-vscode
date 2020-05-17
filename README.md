@@ -18,7 +18,7 @@ This repository contains two components of the application
 ```bash
 npm i -g open-with-vscode
 ```
-2. Install the [FireFox AddOn]() to your browser
+2. Install the [FireFox AddOn](https://addons.mozilla.org/en-US/firefox/addon/open-with-vscode) to your browser
 
 After installing both the Connector and the addon, simply go to any repository on GitHub, click on `clone or download`, you will be able to see the `Open with VSCode` button.
 
