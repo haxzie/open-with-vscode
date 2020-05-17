@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.github.com/*/*"],
-      "js": ["index.js"]
+      "js": ["content-script.js"]
     }
   ],
   "browser_specific_settings": {
@@ -20,7 +20,7 @@
     }
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background-script.js"]
   },
-  "permissions": ["nativeMessaging"]
+  "permissions": ["nativeMessaging", "activeTab", "tabs"]
 }

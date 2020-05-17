@@ -40,19 +40,13 @@ function createDirIfNotExist(dir) {
  * @param {String} commad to execute
  */
 function executeCommand(command) {
-  exec(command, (error, stdout, stderr) => {
-    if (error) {
-      writeBack({ action: "OPEN", status: "failed", status_code: 500, error });
-      return;
-    }
-    writeBack({
-      action: "OPEN",
-      status: "completed",
-      status_code: 200,
-      stdout,
-      stderr,
+  return new Promise((resolve, reject) => {
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        return reject();
+      }
+      return resolve({ stdout, stderr });
     });
-    return;
   });
 }
 
@@ -60,7 +54,7 @@ function executeCommand(command) {
  *
  * @param {String} cloneURL of the repository
  */
-function cloneAndOpenRepo(cloneURL) {
+function cloneAndOpenRepo(cloneURL, tab_id) {
   const urlParts = cloneURL.split("/");
   const repositoryName = urlParts[urlParts.length - 1].slice(0, -4);
 
@@ -73,6 +67,7 @@ function cloneAndOpenRepo(cloneURL) {
     action: "OPEN",
     status: "start",
     status_code: 201,
+    tab_id,
   });
 
   // open the project if already exists
@@ -80,7 +75,25 @@ function cloneAndOpenRepo(cloneURL) {
   log(localPath);
 
   if (isDirExists(localPath)) {
-    executeCommand(`code ${localPath}`);
+    executeCommand(`code ${localPath}`)
+      .then((result) => {
+        writeBack({
+          action: "OPEN",
+          status: "completed",
+          status_code: 200,
+          tab_id,
+          ...result,
+        });
+      })
+      .catch((error) => {
+        writeBack({
+          action: "OPEN",
+          status: "failed",
+          status_code: 500,
+          tab_id,
+          error,
+        });
+      });
   } else {
     const command = `git clone ${cloneURL} ${localPath} && code ${localPath}`;
     executeCommand(command);
@@ -91,14 +104,19 @@ function cloneAndOpenRepo(cloneURL) {
  * Function to check if the repository is already present in the local target dir
  * @param {String} cloneURL of the repository
  */
-function checkIfCloned(cloneURL) {
+function checkIfCloned(cloneURL, tab_id) {
   const urlParts = cloneURL.split("/");
   const repositoryName = urlParts[urlParts.length - 1].slice(0, -4);
   const localPath = path.join(TARGET_DIR, repositoryName);
   if (isDirExists(localPath)) {
-    writeBack({ action: "CHECK", status: "Exists", status_code: 200 });
+    writeBack({ action: "CHECK", status: "Exists", status_code: 200, tab_id });
   } else {
-    writeBack({ action: "CHECK", status: "Does not exist", status_code: 400 });
+    writeBack({
+      action: "CHECK",
+      status: "Does not exist",
+      status_code: 400,
+      tab_id,
+    });
   }
   return;
 }
@@ -108,5 +126,5 @@ module.exports = {
   createDirIfNotExist,
   executeCommand,
   cloneAndOpenRepo,
-  checkIfCloned
+  checkIfCloned,
 };

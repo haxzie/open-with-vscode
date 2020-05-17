@@ -1,51 +1,27 @@
-/**
- * Finds and returns the modal element
- */
-function getModalEl() {
-  const repoModalEl = document.getElementsByClassName("get-repo-modal")[0];
-  const modalEl = repoModalEl.children[0];
-  return modalEl;
-}
 
-/**
- * Function to get the clone URL displayed in the input field
- * Based on which input section is active (either ssh or https)
- * returns the url that is currently selected by the user
- */
-function getCloneUrl() {
-  const modalEl = getModalEl();
-  // const httpsCloneEl = modalEl.getElementsByClassName("https-clone-options")[0];
-  // const httpsCloneUrl = httpsCloneEl.getElementsByClassName("input-sm")[0]
-  //   .value;
+import { appendOpenWithButton, disableButton, setButtonText } from "./src/DOMActions";
 
-  const sshCloneEl = modalEl.getElementsByClassName("ssh-clone-options")[0];
-  const sshCloneUrl = sshCloneEl.getElementsByClassName("input-sm")[0].value;
-
-  return sshCloneUrl;
-}
-
-/**
- * Function to append a new button called "Open with VSCode"
- * into the drop down modal of GitHub clone button
- */
-function appendOpenWithButton() {
-  const openWithCodeButtonEl = document.createElement("button");
-  openWithCodeButtonEl.setAttribute(
-    "class",
-    "flex-1 btn btn-outline get-repo-btn"
-  );
-  openWithCodeButtonEl.innerHTML = "Clone and open with Code";
-
-  const openWithCodeContainerEl = document.createElement("div");
-  openWithCodeContainerEl.setAttribute("class", "d-flex");
-  openWithCodeContainerEl.appendChild(openWithCodeButtonEl);
-
-  openWithCodeContainerEl.onclick = (e) => {
-    browser.runtime.sendMessage({ url: getCloneUrl() });
-    console.log("Open with code clicked");
-  };
-
-  getModalEl().appendChild(openWithCodeContainerEl);
-}
+console.log("Script connected")
 
 appendOpenWithButton();
+
+browser.runtime.onMessage.addListener((message) => {
+  console.log("CS", message);
+  switch (message.action) {
+    case "CHECK":
+      if (message.status_code === 200) {
+        disableButton(false);
+        setButtonText("Open with VSCode");
+      }
+      break;
+    case "OPEN":
+      if (message.status_code === 201) {
+        disableButton(true);
+        setButtonText("Cloning repo...");
+      } else if (message.status_code === 200) {
+        disableButton(false);
+        setButtonText("Open with VSCode");
+      }
+      break;
+  }
+});

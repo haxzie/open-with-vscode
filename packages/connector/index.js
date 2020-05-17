@@ -7,22 +7,22 @@ const { cloneAndOpenRepo, checkIfCloned } = require("./src/actions");
 /**
  * Setup global error handlers
  */
-setupGlobalErrorHandler();
+setupGlobalErrorHandler(log);
 
 /**
  * Listen for new messages
  */
 listenForMessage((message) => {
+  log({ message })
   try {
     const action = message.action;
+    const cloneURL = message.url;
     switch(action) {
       case "OPEN":
-        const cloneURL = message.url;
-        cloneAndOpenRepo(cloneURL);
+        cloneAndOpenRepo(cloneURL, message.tab_id);
         break;
       case "CHECK":
-        const cloneURL = message.url;
-        checkIfCloned(cloneURL);
+        checkIfCloned(cloneURL, message.tab_id);
         break;
     }
   } catch (error) {
