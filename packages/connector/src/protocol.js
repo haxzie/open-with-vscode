@@ -3,7 +3,7 @@
  * This is where the browser can pickup the stdout messages
  * @param {Object} msg to be encoded and written to standard output
  */
-function sendMessage(msg) {
+export function sendMessage(msg) {
   const buffer = Buffer.from(JSON.stringify(msg));
 
   const header = Buffer.alloc(4);
@@ -18,7 +18,7 @@ function sendMessage(msg) {
  * Sends the parsed data from the STDIN to the provided callback
  * @param {Function} callback to recieve the message sent by the browser
  */
-function listenForMessage(callback) {
+export function listenForMessage(callback) {
   let payloadSize = null;
 
   // A queue to store the chunks as we read them from stdin.
@@ -67,5 +67,3 @@ function listenForMessage(callback) {
     }
   });
 }
-
-module.exports = { sendMessage, listenForMessage };

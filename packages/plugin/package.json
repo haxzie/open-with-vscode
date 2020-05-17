@@ -5,10 +5,13 @@
   "author": "haxzie",
   "license": "MIT",
   "scripts": {
+    "start": "yarn build && web-ext run --source-dir ./dist/",
+    "dev": "rollup --config --watch",
     "build": "rollup --config"
   },
   "devDependencies": {
     "rollup": "^2.10.2",
-    "rollup-plugin-copy": "^3.3.0"
+    "rollup-plugin-copy": "^3.3.0",
+    "web-ext": "^4.2.0"
   }
 }

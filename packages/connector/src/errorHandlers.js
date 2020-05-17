@@ -4,7 +4,7 @@ const fs = require("fs");
  * Function to handler all the unhandled errors and log it with a logger
  * @param {Function} logCallback to log global unhandled errors
  */
-function setupGlobalErrorHandler(logCallback) {
+export function setupGlobalErrorHandler(logCallback) {
   process.on("uncaughtException", (err) => {
     logCallback({ error: err.toString(), trace: err.stack });
   });
@@ -14,7 +14,10 @@ function setupGlobalErrorHandler(logCallback) {
  * Function to log messages to a logfile
  * @param {Object} message to be logged
  */
-function log(message) {
+export function log(message) {
+  // log only on dev
+  if (process.env.NODE_ENV !== "dev") return;
+
   const dateParts = new Date().toString().split(" ");
   const logDate = `${dateParts[4]}:${dateParts[2]}:${dateParts[3]}: `;
   fs.appendFileSync(
@@ -22,5 +25,3 @@ function log(message) {
     `${logDate}\t${JSON.stringify(message, null, 2)}\n`
   );
 }
-
-module.exports = { setupGlobalErrorHandler, log }

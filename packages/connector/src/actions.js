@@ -121,7 +121,7 @@ function checkIfCloned(cloneURL, tab_id) {
   return;
 }
 
-module.exports = {
+export {
   isDirExists,
   createDirIfNotExist,
   executeCommand,
