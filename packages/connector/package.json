@@ -7,11 +7,17 @@
     "open-with-vscode": "index.js"
   },
   "repository": "https://github.com/haxzie/open-with-vscode",
-  "author": "haxzie",
+  "author": "Musthaq Ahamad <musthu.gm@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "extension",
+    "connector",
+    "firefox",
+    "git",
+    "github",
+    "vscode"
+  ],
   "scripts": {
-    "dev": "env NODE_ENV=dev rollup --config --watch",
-    "build": "rollup --config",
     "postinstall": "node install.js"
   },
   "devDependencies": {},
