@@ -3,9 +3,11 @@
 <p align="center">FireFox plugin and connector to open any GitHub repository directly from the browser</p>
 </center>
 
+[![Maintenance](https://img.shields.io/badge/Status-unstable-red.svg)](https://bitbucket.org/lbesson/ansi-colors) [![Maintenance](https://img.shields.io/badge/Build-pasing-green.svg)](https://bitbucket.org/lbesson/ansi-colors) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
 ![](public/cover.png)
 
-**Note: The application is in it's early stages and may be highly unstable. Currently we only support Linux/MacOS.**
+**Note: The application is in it's early stages and may be highly unstable. Currently we only support Linux.**
 
 This repository contains two components of the application
 
@@ -48,7 +50,10 @@ npm link
 ```
 
 #### For development 
+
 > The connector will automatically install the necessary `native manifest` to `.mozilla/native-messaging-hosts` in your `home` directory. If you want to run the connector from the source, edit the `.mozilla/native-messaging-hosts/open_with_vscode.json` file and add the following contents by replacing the path property with the index.js file of the connector.
+#### For Linux/Debian System
+ Copy the following JSON file to `~/.mozilla/native-messaging-hosts/open_with_vscode.json`
 
 ```javascript
 {
@@ -60,6 +65,8 @@ npm link
 }
 ```
 
+#### For MacOS System
+Copy the above JSON file to `~/Library/Application Support/Mozilla/NativeMessagingHosts/<name>.json`
 ### Install the dependencies for the plugin
 
 cd into the `packages/plugin` directory and execute the following command.
