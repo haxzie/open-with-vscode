@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { listenForMessage } = require("./src/protocol");
 const { setupGlobalErrorHandler, log } = require("./src/errorHandlers");
 const { cloneAndOpenRepo, checkIfCloned } = require("./src/actions");

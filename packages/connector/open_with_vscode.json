@@ -1,7 +1,7 @@
 {
   "name": "open_with_vscode",
   "description": "Host for executing git commads",
-  "path": "/home/haxzie/projects/open-with-vscode/packages/connector/index.js",
+  "path": "open-with-code",
   "type": "stdio",
   "allowed_extensions": ["open-with-vscode@haxzie.com"]
 }

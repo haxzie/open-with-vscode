@@ -2,22 +2,18 @@
   "name": "open-with-vscode",
   "version": "0.1.0",
   "description": "Native Connector for Open With VSCODE plugin",
-  "main": "dist/index.js",
+  "main": "index.js",
   "bin": {
-    "open-with-code": "dist/index.js"
+    "open-with-vscode": "index.js"
   },
   "repository": "https://github.com/haxzie/open-with-vscode",
   "author": "haxzie",
   "license": "MIT",
   "scripts": {
     "dev": "env NODE_ENV=dev rollup --config --watch",
-    "build": "rollup --config"
+    "build": "rollup --config",
+    "postinstall": "node install.js"
   },
-  "devDependencies": {
-    "rollup": "^2.10.2",
-    "rollup-plugin-add-shebang": "^0.3.1",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-node-resolve": "^5.2.0"
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }
