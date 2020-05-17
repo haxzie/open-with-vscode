@@ -15,6 +15,8 @@ function setupGlobalErrorHandler(logCallback) {
  * @param {Object} message to be logged
  */
 function log(message) {
+  if (!process.env.NODE_ENV === "dev") return;
+  
   const dateParts = new Date().toString().split(" ");
   const logDate = `${dateParts[4]}:${dateParts[2]}:${dateParts[3]}: `;
   fs.appendFileSync(
