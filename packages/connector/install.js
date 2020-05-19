@@ -1,7 +1,8 @@
 const fs = require("fs");
 const path = require("path");
-const HOME_DIR = require("os").homedir();
 const { exec } = require("child_process");
+const { getNativeDirPath } = require("./src/manifestPath");
+const nativeDirPath = getNativeDirPath(); // directory in which browsers store the native manifests
 
 // sample native messaging config file
 let config = {
@@ -15,12 +16,12 @@ let config = {
 console.log("Copying manifest files...");
 
 try {
-    // check if the firefox's native messaging host directory is present
+  // check if the firefox's native messaging host directory is present
   if (
-    !fs.existsSync(path.join(HOME_DIR, ".mozilla", "native-messaging-hosts"))
+    !fs.existsSync(nativeDirPath)
   ) {
-      // if not, make the directory
-    fs.mkdirSync(path.join(HOME_DIR, ".mozilla", "native-messaging-hosts"), {
+    // if not, make the directory
+    fs.mkdirSync(nativeDirPath, {
       recursive: true,
     });
   }
@@ -37,18 +38,19 @@ try {
     if (stdout) {
       const bin_path = stdout.trim();
       console.log(stdout);
-      config.path = path.join(bin_path, 'open-with-vscode');
+      config.path = path.join(bin_path, "open-with-vscode");
 
       // copy the config files to firefox's native messaging sub directory
-      fs.writeFileSync(
-        path.join(
-          HOME_DIR,
-          ".mozilla",
-          "native-messaging-hosts",
-          "open_with_vscode.json"
-        ),
-        JSON.stringify(config, null, 2)
-      );
+      if (nativePath) {
+        fs.writeFileSync(
+          path.join(nativePath, "open_with_vscode.json"),
+          JSON.stringify(config, null, 2)
+        );
+      } else {
+        // if native path is not present, likely the OS is windows
+        console.error("Unable to create native manifests, Your OS might not be supported");
+        process.exit(-1);
+      }
     }
   });
 } catch (error) {
