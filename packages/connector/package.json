@@ -1,6 +1,6 @@
 {
   "name": "open-with-vscode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Native Connector for Open With VSCODE plugin",
   "main": "index.js",
   "bin": {
