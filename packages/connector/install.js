@@ -41,9 +41,9 @@ try {
       config.path = path.join(bin_path, "open-with-vscode");
 
       // copy the config files to firefox's native messaging sub directory
-      if (nativePath) {
+      if (nativeDirPath) {
         fs.writeFileSync(
-          path.join(nativePath, "open_with_vscode.json"),
+          path.join(nativeDirPath, "open_with_vscode.json"),
           JSON.stringify(config, null, 2)
         );
       } else {
