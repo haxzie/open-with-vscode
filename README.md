@@ -1,5 +1,5 @@
 <center>
-<h1 align="center">Open With Visual Studio Code</h1>
+<h1 align="center">Open With Visual Studio Code :rocket:</h1>
 <p align="center">FireFox plugin and connector to open any GitHub repository directly from the browser</p>
 </center>
 
@@ -14,7 +14,14 @@ This repository contains two components of the application
 - A native connector app
 - FireFox AddOn
 
-## Installation
+## PreRequisites :arrow_up_small:
+
+- Latest version of FireFox
+- Latest version of Node.js and NPM
+- Git installed and configured
+- GitHub account and your local machine is setup with [SSH keys to your GitHub account](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account)
+
+## Installation :package:
 
 1. Install the connector to your machine
 ```bash
@@ -26,7 +33,7 @@ After installing both the Connector and the addon, simply go to any repository o
 
 By Default, the connector clones the repositories to `~/github-projects` directory within your system. Once the repository is already cloned, you can simply use the same button to open the repository using VSCode without any cloning.
 
-## Setting up the project for development
+## Setting up the project for development :computer:
 
 Make sure you have the following requirements installed/setup in your system
 
