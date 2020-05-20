@@ -23,6 +23,9 @@ jobs:
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/connector
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -36,6 +39,9 @@ jobs:
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/connector
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
