@@ -8,6 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./packages/connector
+    defaults:
+      run:
+        working-directory: ./packages/connector
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
