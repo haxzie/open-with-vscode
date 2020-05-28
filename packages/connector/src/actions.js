@@ -75,7 +75,7 @@ function cloneAndOpenRepo(cloneURL, tab_id) {
   log(localPath);
 
   if (isDirExists(localPath)) {
-    executeCommand(`code ${localPath}`)
+    executeCommand(`code ${localPath} || codium ${localPath}`)
       .then((result) => {
         writeBack({
           action: "OPEN",
