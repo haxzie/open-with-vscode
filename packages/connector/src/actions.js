@@ -75,7 +75,7 @@ function cloneAndOpenRepo(cloneURL, tab_id) {
   log(localPath);
 
   if (isDirExists(localPath)) {
-    executeCommand(`code ${localPath} || codium ${localPath}`)
+    executeCommand(`$(which code || which codium) ${localPath}`)
       .then((result) => {
         writeBack({
           action: "OPEN",
@@ -95,7 +95,7 @@ function cloneAndOpenRepo(cloneURL, tab_id) {
         });
       });
   } else {
-    const command = `git clone ${cloneURL} ${localPath} && code ${localPath}`;
+    const command = `git clone ${cloneURL} ${localPath} && $(which code || which codium) ${localPath}`;
     executeCommand(command);
   }
 }
